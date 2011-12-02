@@ -1,8 +1,8 @@
 MM.type =(function(){
 	var _type = "base";
 	var _templateMarkup ="<div class='${platform}'>"+
-							"<span class='plt'>${platform}</span><span class='typ'>${type}</span>"+
- 							"<span class='date'>${date ? date.toString(\"dddd, MMMM d h:mm:tt\"): ''}</span>" +
+							"<span class='plt'>${platform}</span><span class='typ'></span>"+
+// 							"<span class='date'>${date ? date.toString(\"dddd, MMMM d h:mm:tt\"): ''}</span>" +
  							"<span class='loc'>${location && location.name ? location.name : ''}</span>"+
 							"<span class='tpc'>${topics ? topics.join(', ') : ''}</span>"+
 						"</div>";
