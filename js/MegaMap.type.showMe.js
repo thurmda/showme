@@ -14,8 +14,8 @@ MM.type.showMe = (function(){
 	
 	
 	
-	$.template("sxswFeed" , _templateMarkup);
-	$.template("sxswCard" , _cardMarkup);
+	$.template("showMeFeed" , _templateMarkup);
+	$.template("showMeCard" , _cardMarkup);
 	
 	var _updateFeedDisplay = function(data){
 //		var url = data.id +".html";
@@ -225,7 +225,7 @@ MM.type.showMe = (function(){
 		"<p>http://austin2011.sched.org/<input id='schedId' value='thurmda'/><button>Go</button></p>");
 //		MM.gui.$card.fadeIn(1000);
 		*/
-		MM.gui.$card.html("<h1>Do you need to authorize acces to your calendar?</h1><a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>");		
+		MM.gui.$card.html("<h1>Please <a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a> to authorize acces to your calendar?</h1>");		
 		////////////
 		
 //		_fetchSchedule(null, "thurmda");
@@ -274,16 +274,16 @@ var _parseCal = function(cal){
 			console.dir(item);
 			if(item.summary){//item has GEO!
 				if (true){
-					exactGeo = $.extend({},{name: 'Name of Event'}, venues[Math.floor(Math.random() * venues.length)] );
+					exactGeo = $.extend({},{name: item.summary}, venues[Math.floor(Math.random() * venues.length)] );
 				} 	
 				var sxsw = {
 				    type: "sxsw",
 				    when: new Date(),
-				    venue: 'Name of Venue',
+				    venue: item.location,
 				    topics: [],
 				    location : exactGeo  || {name : item.summary , tilt: 70 },
 				    region: "Austin, TX",
-					title: 'Title',
+					title: item.description,
 					id: 'Id'
 				}
 				MM.data.dataReciever(null , sxsw);	
@@ -317,7 +317,7 @@ var _parseCal = function(cal){
 			} 
 			
 			var sxsw = {
-				    type: "sxsw",
+				    type: "showMe",
 				    when: w,
 				    venue: [m[2]],
 				    topics: [],
